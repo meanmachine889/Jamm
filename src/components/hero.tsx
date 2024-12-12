@@ -1,5 +1,5 @@
 import Image from "next/image";
-import hero from "../../public/Cover2.png";
+import hero from "../../public/cover2.png";
 import { Button } from "./ui/button";
 
 export default function Hero() {
