@@ -22,16 +22,22 @@ export const HomePlaylist = ({
             key={index}
             className="flex w-[100%] h-[15rem] flex-col items-start justify-start"
           >
-            <Image
-              width={300}
-              height={300}
-              quality={100}
-              src={playlist.cover}
-              alt={playlist.name}
-              className=" rounded-sm"
-            />
-            <h1 className="text-gray-300 text-sm font-semibold mt-2">{playlist.name}</h1>
-            <p className="text-gray-400 text-wrap max-w-[100%] mt-1 text-[11px]">{playlist.description}</p>
+            <div className="relative w-full aspect-square overflow-hidden rounded-sm">
+              <Image
+                width={300}
+                height={300}
+                quality={100}
+                src={playlist.cover}
+                alt={playlist.name}
+                className="rounded-sm transition-transform duration-300 ease-in-out hover:scale-105 hover:opacity-90"
+              />
+            </div>
+            <h1 className="text-gray-300 text-sm font-semibold mt-2">
+              {playlist.name}
+            </h1>
+            <p className="text-gray-400 text-wrap max-w-[100%] mt-1 text-[11px]">
+              {playlist.description}
+            </p>
           </div>
         ))}
       </div>
