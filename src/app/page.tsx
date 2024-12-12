@@ -7,72 +7,8 @@ import Hero from "@/components/hero";
 import { HomePlaylist } from "@/components/home-playlists";
 import { useState } from "react";
 import MusicPlayer from "@/components/musicPlayer";
-
-const playlist = [
-  {
-    name: "We don't trust you",
-    cover:
-      "https://i.pinimg.com/736x/33/5f/b8/335fb8953c859a8dca9c75b809bc00db.jpg",
-    description: "Future & Metro Boomin's latest album just for you",
-  },
-  {
-    name: "Blond",
-    cover:
-      "https://i.pinimg.com/236x/d5/49/49/d54949f1c080a1b4c79b57884894e015.jpg",
-    description: "Frank Ocean's new album",
-  },
-  {
-    name: "Flower Boy",
-    cover:
-      "https://i.pinimg.com/736x/e5/3b/2a/e53b2aa902156191c38bdb24ee311466.jpg",
-    description: "by Tyler, The Creator",
-  },
-  {
-    name: "Trilogy",
-    cover:
-      "https://i.pinimg.com/736x/82/de/25/82de25b193a12fa7ac30385887d03b31.jpg",
-    description: "by The Weeknd",
-  },
-  {
-    name: "Syre",
-    cover:
-      "https://i.pinimg.com/736x/fb/9a/8b/fb9a8bc768fb5be8607889d292ee3d75.jpg",
-    description: "by Syre",
-  },
-];
-
-const songs = [
-  {
-    name: "JackBoys",
-    cover:
-      "https://i.pinimg.com/236x/3d/f7/86/3df7867ea16547f959efe5f65dc682a1.jpg",
-    description: "Travis Scott",
-  },
-  {
-    name: "First Class",
-    cover:
-      "https://i.pinimg.com/236x/91/3d/1f/913d1f77a75868ebffd8bff72b5ee88f.jpg",
-    description: "Jack Harlow",
-  },
-  {
-    name: "Undergroung Kings",
-    cover:
-      "https://i.pinimg.com/236x/3f/ec/4b/3fec4b0b3d88df2df6115731d668271a.jpg",
-    description: "Drake",
-  },
-  {
-    name: "Nectar",
-    cover:
-      "https://i.pinimg.com/236x/2e/01/d0/2e01d09c54b023eb1a278fad348b48ee.jpg",
-    description: "Joji",
-  },
-  {
-    name: "Sicko Mode",
-    cover:
-      "https://i.pinimg.com/736x/b4/c9/6a/b4c96a5a5ed59da455e03069ffb71904.jpg",
-    description: "Travis Scott ft. Drake",
-  },
-];
+import { HomeSonglist } from "@/components/home-songlist";
+import { songs, playlist, recentlyPlayed } from "@/components/components";
 
 export default function Home() {
   const [currentSong, setCurrentSong] = useState<Song>({
@@ -92,9 +28,9 @@ export default function Home() {
           <Header />
           <Hero />
           <HomePlaylist title="Hello, Yash" Playlists={playlist} />
-          <HomePlaylist title="New releases for you" Playlists={songs} />
+          <HomeSonglist title="New releases for you" Playlists={songs} onClick={setCurrentSong} recentlyPlayed={recentlyPlayed} />
         </div>
-        <MusicSidebar setCurrentSong={setCurrentSong} />
+        <MusicSidebar setCurrentSong={setCurrentSong} recentlyPlayed={recentlyPlayed} />
       </div>
       <MusicPlayer link={currentSong.link} artist={currentSong.artist} title={currentSong.title} />
     </div>

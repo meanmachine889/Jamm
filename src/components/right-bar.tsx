@@ -23,42 +23,6 @@ export interface Playlist {
   cover: string;
 }
 
-const recentlyPlayed: Song[] = [
-  {
-    title: "Starboy",
-    artist: "The Weeknd",
-    cover:
-      "https://i.pinimg.com/736x/70/f9/be/70f9becbf32703530817456fcc088bb5.jpg",
-    timestamp: new Date(Date.now() - 4 * 60 * 1000), 
-    link: "https://res.cloudinary.com/dnfv0h10u/video/upload/v1733979950/starboy_notzi2.mp3"
-  },
-  {
-    title: "Sicko Mode",
-    artist: "Travis Scott ft. Drake",
-    cover:
-      "https://i.pinimg.com/736x/b4/c9/6a/b4c96a5a5ed59da455e03069ffb71904.jpg",
-    timestamp: new Date(Date.now() - 7 * 60 * 1000), 
-    link: "https://res.cloudinary.com/dnfv0h10u/video/upload/v1733986719/Travis_Scott_-_SICKO_MODE_Audio_zdg9rv.mp3"
-  },
-  {
-    title: "EARFQUAKE",
-    artist: "Tyler, The Creator",
-    cover:
-      "https://i.pinimg.com/736x/11/f5/90/11f590ae8adc3971d70a145389bd18ce.jpg",
-    timestamp: new Date(Date.now() - 60 * 60 * 1000), 
-    link: "https://res.cloudinary.com/dnfv0h10u/video/upload/v1733986722/Tyler_The_Creator_-_EARFQUAKE_gmf7ax.mp3"
-  },
-  {
-    title: "Humble",
-    artist: "Kendrick Lamar",
-    cover:
-      "https://i.pinimg.com/736x/83/b6/5f/83b65f9cefba8d7de721892c6fcb0b83.jpg",
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), 
-    link: "https://res.cloudinary.com/dnfv0h10u/video/upload/v1733986726/Kendrik_Lamar_-_Humble_e008oi.mp3"
-  },
-];
-
-
 const playlists: Playlist[] = [
   {
     title: "land of rising sun",
@@ -93,9 +57,11 @@ const playlists: Playlist[] = [
 
 export type PlaylistProp = {
   setCurrentSong: (song: Song) => void;
+  recentlyPlayed: Song[];
 }
 
-export function MusicSidebar({ setCurrentSong }: PlaylistProp) {
+export function MusicSidebar({ setCurrentSong, recentlyPlayed }: PlaylistProp) {
+
   return (
     <div className="flex max-h-[85vh] main-page overflow-y-auto h-[85vh] w-[30%] flex-col bg-black text-white">
       <div className="flex items-center justify-between p-4">
