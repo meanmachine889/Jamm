@@ -27,13 +27,13 @@ const MusicPlayer = ({ title, artist, link }: MusicPlayerProps) => {
   const [duration, setDuration] = useState(0);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.pause();
     }
 
-    
     audioRef.current = new Audio(link);
 
     const updateProgress = () => {
@@ -54,24 +54,21 @@ const MusicPlayer = ({ title, artist, link }: MusicPlayerProps) => {
 
     const audio = audioRef.current;
 
-    
     audio.addEventListener("timeupdate", updateProgress);
     audio.addEventListener("loadedmetadata", setMetadata);
     audio.addEventListener("ended", onAudioEnd);
 
-    
     if (isPlaying) {
       audio.play();
     }
 
     return () => {
-      
       audio.removeEventListener("timeupdate", updateProgress);
       audio.removeEventListener("loadedmetadata", setMetadata);
       audio.removeEventListener("ended", onAudioEnd);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [link]); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [link]);
 
   const playAudio = () => {
     if (!audioRef.current) return;
@@ -82,6 +79,18 @@ const MusicPlayer = ({ title, artist, link }: MusicPlayerProps) => {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!audioRef.current || !progressBarRef.current) return;
+
+    const rect = progressBarRef.current.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const newProgress = (clickX / rect.width) * 100;
+    const newTime = (newProgress / 100) * audioRef.current.duration;
+
+    audioRef.current.currentTime = newTime;
+    setProgress(newProgress);
   };
 
   return (
@@ -114,7 +123,11 @@ const MusicPlayer = ({ title, artist, link }: MusicPlayerProps) => {
               {Math.floor((audioRef.current?.currentTime || 0) / 60)}:
               {String(Math.floor((audioRef.current?.currentTime || 0) % 60)).padStart(2, "0")}
             </span>
-            <div className="flex-1 h-1 w-[30vw] bg-gray-600 rounded-full">
+            <div
+              className="flex-1 h-1 w-[30vw] bg-gray-600 rounded-full cursor-pointer"
+              onClick={handleProgressBarClick}
+              ref={progressBarRef}
+            >
               <div
                 className="h-full bg-blue-300 rounded-full relative transition-all"
                 style={{ width: `${progress}%` }}
