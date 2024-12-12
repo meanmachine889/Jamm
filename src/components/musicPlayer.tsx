@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Heart,
-  ListMusic,
   Shuffle,
   SkipBack,
   Play,
@@ -89,18 +87,11 @@ const MusicPlayer = ({ title, artist, link }: MusicPlayerProps) => {
   return (
     <div className="h-[15vh] flex min-w-[100%] items-center justify-center border-t border-gray-700 bg-[#0d0d0d] text-white p-4 fixed bottom-0 left-0">
       <div className="max-w-9xl w-[100%] mx-auto flex items-center justify-between">
-        <div className="flex min-w-[8%] max-w-[8%] flex-col items-start text-gray-400 justify-start">
+        <div className="flex min-w-[15%] max-w-[15%] flex-col items-start text-gray-400 justify-start">
           <p>{title}</p>
           <p className="text-xs text-gray-500">{artist}</p>
         </div>
-        <div className="flex items-center w-[5%] gap-6">
-          <div className="flex items-center gap-4">
-            <Heart className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
-            <ListMusic className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center flex-1 max-w-2xl px-4">
+        <div className="flex flex-col items-center flex-1 px-4">
           <div className="flex items-center gap-6 mb-2">
             <Shuffle className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" />
             <SkipBack className="w-5 h-5 text-gray-200 hover:text-white cursor-pointer" />
@@ -137,7 +128,7 @@ const MusicPlayer = ({ title, artist, link }: MusicPlayerProps) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center w-[20%] max-w-[30%] gap-4">
           <Mic2 className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" />
           <MonitorPlay className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" />
           <div className="flex items-center gap-2">

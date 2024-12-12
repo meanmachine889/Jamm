@@ -113,9 +113,7 @@ export function MusicSidebar({ setCurrentSong, recentlyPlayed }: PlaylistProp) {
       </div>
       <div className="mt-4 px-4 pb-4">
         <Button
-          className="w-full justify-center rounded-xl bg-gray-300 text-gray-900 font-semibold hover:scale-105 transition-all hover:bg-gray-400 hover:text-gray-900"
-          variant="ghost"
-        >
+          className="w-full justify-center rounded-xl bg-gray-300 text-gray-900 font-semibold transition-all hover:bg-indigo-700 hover:text-gray-300"        >
           Create New Playlist
         </Button>
       </div>

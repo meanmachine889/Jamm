@@ -5,7 +5,7 @@ export const playlist = [
       name: "We don't trust you",
       cover:
         "https://i.pinimg.com/736x/33/5f/b8/335fb8953c859a8dca9c75b809bc00db.jpg",
-      description: "Future & Metro Boomin's latest album just for you",
+      description: "Future & Metro Boomin",
     },
     {
       name: "Blond",
